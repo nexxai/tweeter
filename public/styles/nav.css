@@ -1,0 +1,38 @@
+nav {
+  height: 120px;
+  width: 100%;
+  background-color: #4056A1;
+  color: #FFFFFF;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+}
+
+nav span {
+  font-family: 'Bungee', cursive;
+  font-size: larger;
+}
+
+.write-tweet-angle {
+  justify-content: center;
+  font-size: smaller;
+}
+
+nav a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+nav i {
+  color: red;
+}
+
+nav p {
+  display: flex;
+  justify-content: space-evenly;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
