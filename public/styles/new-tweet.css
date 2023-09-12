@@ -1,6 +1,7 @@
 .new-tweet-input {
   display: flex;
   flex-direction: column;
+  padding-top: 1rem;
   padding-bottom: 1rem;
   border-bottom: solid 4px #545149;
 }
