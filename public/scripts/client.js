@@ -8,6 +8,14 @@ $(document).ready(() => {
   $("#new-tweet-form").on("submit", function (event) {
     event.preventDefault();
 
+    if ($("#tweet-text").val().length > 140) {
+      alert("Tweet too long.  Maximum: 140 characters");
+      return;
+    } else if ($("#tweet-text").val().length === 0) {
+      alert("Tweets must contain at least 1 character");
+      return;
+    }
+
     $formData = $("#new-tweet-form").serialize();
 
     $.ajax({
