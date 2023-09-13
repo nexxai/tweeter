@@ -23,7 +23,7 @@ $(document).ready(() => {
       url: "/tweets",
       data: $formData,
       success: () => {
-        console.log("Tweet stored on server");
+        loadTweets();
       },
     });
   });
@@ -40,6 +40,8 @@ $(document).ready(() => {
 
   const renderTweets = function (tweets) {
     $container = $("#tweets");
+
+    $container.empty();
 
     for (let tweet of tweets) {
       $container.append(createTweetElement(tweet));
