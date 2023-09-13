@@ -14,33 +14,21 @@ $(document).ready(() => {
       method: "POST",
       url: "/tweets",
       data: $formData,
+      success: () => {
+        console.log("Tweet stored on server");
+      },
     });
   });
 
-  const data = [
-    {
-      user: {
-        name: "Newton",
-        avatars: "https://i.imgur.com/73hZDYK.png",
-        handle: "@SirIsaac",
+  const loadTweets = function () {
+    $.ajax({
+      method: "GET",
+      url: "/tweets",
+      success: (data) => {
+        renderTweets(data);
       },
-      content: {
-        text: "If I have seen further it is by standing on the shoulders of giants",
-      },
-      created_at: 1461116232227,
-    },
-    {
-      user: {
-        name: "Descartes",
-        avatars: "https://i.imgur.com/nlhLi3I.png",
-        handle: "@rd",
-      },
-      content: {
-        text: "Je pense , donc je suis",
-      },
-      created_at: 1461113959088,
-    },
-  ];
+    });
+  };
 
   const renderTweets = function (tweets) {
     $container = $("#tweets");
@@ -66,7 +54,7 @@ $(document).ready(() => {
           ${tweet.content.text}
         </p>
         <footer class="tweet">
-          <div class="timeAgo">${tweet.created_at}</div>
+          <div class="timeago timeAgo">${timeago.format(tweet.created_at)}</div>
           <div class="shareLinks">
             <div class="shareLink"><i class="fa-solid fa-2xs fa-flag"></i></div>
             <div class="shareLink"><i class="fa-solid fa-2xs fa-retweet"></i></div>
@@ -76,5 +64,5 @@ $(document).ready(() => {
       </article>`;
   };
 
-  renderTweets(data);
+  loadTweets();
 });
