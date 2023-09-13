@@ -5,17 +5,29 @@
  */
 
 $(document).ready(() => {
+  const displayError = function (container, error) {
+    // Display an error
+    $(container).addClass("show-error").text(error);
+  };
+
   $("#new-tweet-form").on("submit", function (event) {
     event.preventDefault();
 
+    // Clear out any existing error messages
+    $("#tweet-error").empty().removeClass("show-error");
+
+    // Validate that the tweet has at least one and no more than 140 chars
     if ($("#tweet-text").val().length > 140) {
-      alert("Tweet too long.  Maximum: 140 characters");
+      // Display an error
+      displayError("#tweet-error", "Tweet too long.  Maximum: 140 characters");
       return;
     } else if ($("#tweet-text").val().length === 0) {
-      alert("Tweets must contain at least 1 character");
+      // Display an error
+      displayError("#tweet-error", "Tweets must contain at least 1 character");
       return;
     }
 
+    // Prepare the data to post back to the server
     $formData = $("#new-tweet-form").serialize();
 
     $.ajax({
@@ -23,6 +35,7 @@ $(document).ready(() => {
       url: "/tweets",
       data: $formData,
       success: () => {
+        // If the post was successful, refresh the tweets
         loadTweets();
       },
     });
@@ -41,15 +54,18 @@ $(document).ready(() => {
   const renderTweets = function (tweets) {
     $container = $("#tweets");
 
+    // Clear the container first
     $container.empty();
 
     for (let tweet of tweets) {
+      // ...and add each successive tweet to it
       $container.append(createTweetElement(tweet));
     }
   };
 
   const escape = function (str) {
     let div = document.createElement("div");
+    // Make sure we're not allowing any XSS
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };

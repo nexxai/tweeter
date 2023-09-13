@@ -32,3 +32,13 @@ button {
   padding: 0.25rem 0.75rem;
   border: 0;
 }
+
+.show-error {
+  display: block;
+  margin-top: 20px;
+  background-color: rgba(255, 0, 0, 0.4);
+  color: red;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid red;
+}
