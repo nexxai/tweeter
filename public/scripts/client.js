@@ -48,20 +48,26 @@ $(document).ready(() => {
     }
   };
 
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
   const createTweetElement = function (tweet) {
     return `
       <article class="tweet">
         <header class="tweet">
           <div class="avatar">
-            <img src="${tweet.user.avatars}" />
-            <div class="realName">${tweet.user.name}</div>
+            <img src="${escape(tweet.user.avatars)}" />
+            <div class="realName">${escape(tweet.user.name)}</div>
           </div>
           <div class="username">
-            ${tweet.user.handle}
+            ${escape(tweet.user.handle)}
           </div>
         </header>
         <p class="tweet">
-          ${tweet.content.text}
+          ${escape(tweet.content.text)}
         </p>
         <footer class="tweet">
           <div class="timeago timeAgo">${timeago.format(tweet.created_at)}</div>
