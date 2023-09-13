@@ -5,7 +5,17 @@
  */
 
 $(document).ready(() => {
-  $();
+  $("#new-tweet-form").on("submit", function (event) {
+    event.preventDefault();
+
+    $formData = $("#new-tweet-form").serialize();
+
+    $.ajax({
+      method: "POST",
+      url: "/tweets",
+      data: $formData,
+    });
+  });
 
   const data = [
     {
