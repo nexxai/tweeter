@@ -1,12 +1,16 @@
-header {
+header.avatar {
   padding-top: 120px;
   padding-bottom: 40px;
   width: 100%;
-  background-color: #fdfebe;
+  background-color: #b8ba5b;
   background-image: url('/images/always-grey.png');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-header .visible {
+.visible {
   display: flex;
   justify-content: center;
   align-items: center;

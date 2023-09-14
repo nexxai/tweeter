@@ -61,3 +61,7 @@ p.tweet {
 .shareLink:hover {
   color: #fdfebe;
 }
+
+.new-tweet>h2 {
+  display: none;
+}

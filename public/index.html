@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
   <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/responsive.css" type="text/css" />
 
   <!-- External JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -48,35 +49,35 @@
     </div>
   </nav>
 
-  <header>
-    <div class="visible">
-      <div>
-        <img src="/images/profile-hex.png">
-      </div>
-      <br />
-      <div>
-        <h2>JT Smith</h2>
-      </div>
-    </div>
-  </header>
-
   <!-- Page-specific (main) content here -->
   <main class="container">
-    <section class="new-tweet">
-      <h2>Compose Tweet</h2>
-      <form action="/tweets" method="POST" id="new-tweet-form">
-        <div class="new-tweet-input">
-          <label for="tweet-text">What are you humming about?</label>
-          <textarea name="text" id="tweet-text"></textarea>
+    <div id="leftside">
+      <header class="avatar">
+        <div class="visible">
+          <div>
+            <img src="/images/profile-hex.png">
+          </div>
+          <br />
+          <h2>JT Smith</h2>
         </div>
-        <div class="new-tweet-submit">
-          <button type="submit">Tweet</button>
-          <output name="counter" class="counter" for="tweet-text">140</output>
-        </div>
-      </form>
+      </header>
 
-      <error id="tweet-error"></error>
-    </section>
+      <section class="new-tweet">
+        <h2>Compose Tweet</h2>
+        <form action="/tweets" method="POST" id="new-tweet-form">
+          <div class="new-tweet-input">
+            <label for="tweet-text">What are you humming about?</label>
+            <textarea name="text" id="tweet-text"></textarea>
+          </div>
+          <div class="new-tweet-submit">
+            <button type="submit">Tweet</button>
+            <output name="counter" class="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+
+        <error id="tweet-error"></error>
+      </section>
+    </div>
 
     <section id="tweets"></section>
   </main>
