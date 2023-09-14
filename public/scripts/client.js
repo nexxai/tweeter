@@ -37,8 +37,10 @@ $(document).ready(() => {
       success: () => {
         // If the post was successful, refresh the tweets...
         loadTweets();
-        // ...and clear the entry field
+        // ...clear the entry field...
         $("#tweet-text").val("");
+        // ...and reset the counter
+        $(".counter").text("140");
       },
     });
   });
