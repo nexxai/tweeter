@@ -18,7 +18,7 @@ header.tweet {
   justify-content: space-between;
 }
 
-.avatar {
+div.avatar {
   display: flex;
   align-items: center;
 }
