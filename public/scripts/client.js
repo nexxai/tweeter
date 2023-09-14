@@ -6,7 +6,7 @@
 
 $(document).ready(() => {
   const displayError = function (container, error) {
-    // Display an error
+    // Display an error in a normally-hidden <error> container
     $(container).addClass("show-error").text(error);
   };
 
@@ -35,23 +35,32 @@ $(document).ready(() => {
       url: "/tweets",
       data: $formData,
       success: () => {
-        // If the post was successful, refresh the tweets
+        // If the post was successful, refresh the tweets...
         loadTweets();
+        // ...and clear the entry field
+        $("#tweet-text").val("");
       },
     });
   });
 
   const loadTweets = function () {
+    // Reach out to the tweet API and get all the tweets
     $.ajax({
       method: "GET",
       url: "/tweets",
       success: (data) => {
+        // Display the returned tweets
         renderTweets(data);
       },
     });
   };
 
   const renderTweets = function (tweets) {
+    // Make sure all the tweets are in reverse chronological order
+    tweets.sort((a, b) => {
+      return b.created_at - a.created_at;
+    });
+
     $container = $("#tweets");
 
     // Clear the container first
@@ -71,6 +80,7 @@ $(document).ready(() => {
   };
 
   const createTweetElement = function (tweet) {
+    // Build up the concept of a single tweet element
     return `
       <article class="tweet">
         <header class="tweet">
